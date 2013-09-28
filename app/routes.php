@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@index');
+Route::get('signin', 'AuthController@signin');
+Route::get('signup', 'AuthController@signup');
