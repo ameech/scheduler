@@ -1,0 +1,12 @@
+# Reminder Fields
+---
+
+start date
+what time
+once|recurring:how many times, forever|end date
+
+# Notifications
+---
+
+email - Mandrill
+sms - Twilio
