@@ -9,6 +9,7 @@ class AuthController extends BaseController {
      */
     public function signin()
     {
+        // Render View
         return View::make('auth.signin');
     }
 
@@ -19,6 +20,7 @@ class AuthController extends BaseController {
      */  
     public function signup()
     {
+        // Render View
         return View::make('auth.signup');
     }
 }

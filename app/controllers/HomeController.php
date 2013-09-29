@@ -9,6 +9,7 @@ class HomeController extends BaseController {
 	 */
 	public function index()
 	{
+        // Render View
 		return View::make('home.index');
 	}
 }
