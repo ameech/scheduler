@@ -1,30 +1,43 @@
 <?php
 
-use Scheduler\Schedule\ScheduleRepositoryInterface;
-use Scheduler\Settings\SettingsRepositoryInterface;
+use Scheduler\Schedule\ScheduleInterface;
+use Scheduler\Settings\SettingsInterface;
 
 class ScheduleController extends BaseController {
 
     /**
      * Setup the controller
      *
-     * @param ScheduleRepositoryInterface $schedule
-     * @param SettingsRepositoryInterface $settings
+     * @param ScheduleInterface $schedule
+     * @param SettingsInterface $settings
      */
-    public function __construct(ScheduleRepositoryInterface $schedule, SettingsRepositoryInterface $settings)
+    public function __construct(ScheduleInterface $schedule, SettingsInterface $settings)
     {
         $this->schedule = $schedule;
         $this->settings = $settings;
     }
 
     /**
-     * Renders out the settings page
+     * Renders out the reminders page
      *
      * @return object
      */
     public function index()
     {
+        // Get reminders
+        $reminders = $this->schedule->getAll();
+
         // Render View
-        return View::make('schedule.index');
+        return View::make('schedule.index', [
+            'reminders' => $reminders,
+        ]);
+    }
+
+    /**
+     * Creates a reminder
+     */
+    public function createReminder()
+    {
+
     }
 }

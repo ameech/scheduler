@@ -81,3 +81,12 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+/*
+|--------------------------------------------------------------------------
+| Bind Classes
+|--------------------------------------------------------------------------
+*/
+
+App::bind('Scheduler\Settings\SettingsInterface', 'Scheduler\Settings\DbSettings');
+App::bind('Scheduler\Schedule\ScheduleInterface', 'Scheduler\Schedule\DbSchedule');

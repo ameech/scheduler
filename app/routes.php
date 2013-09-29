@@ -11,13 +11,8 @@
 |
 */
 
-App::bind('Scheduler\Settings\SettingsRepositoryInterface', 'Scheduler\Settings\DbSettingsRepository');
-App::bind('Scheduler\Schedule\ScheduleRepositoryInterface', 'Scheduler\Schedule\DbScheduleRepository');
-
-//$test = App::make('ScheduleRepositoryInterface');
-//die(var_dump($test));
-
 Route::get('/', 'HomeController@index');
 Route::get('signin', 'AuthController@signin');
 Route::get('signup', 'AuthController@signup');
 Route::get('schedule', 'ScheduleController@index');
+Route::get('settings', 'SettingsController@index');

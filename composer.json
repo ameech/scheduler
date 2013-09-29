@@ -5,8 +5,12 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.0.*",
-        "vamsiikrishna/when": "dev-master"
+        "vamsiikrishna/when": "dev-master",
+        "cartalyst/sentry": "2.0.*"
 	},
+    "require-dev": {
+        "mockery/mockery": "dev-master@dev"
+    },
 	"autoload": {
 		"classmap": [
 			"app/commands",
