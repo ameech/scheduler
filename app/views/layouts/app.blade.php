@@ -26,14 +26,18 @@
                 <ul class="nav nav-pills pull-right">
                     @if (Sentry::check())
                     <li><a href="{{ url('schedule') }}">Schedule</a></li>
-                    <li><a href="{{ url('settings') }}">Settings</a></li>
+                    <!-- <li><a href="{{ url('settings') }}">Settings</a></li> -->
                     <li><a href="{{ url('signout') }}">Sign Out</a></li>
                     @else
-                    <li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('signin') }}">Sign In</a></li>
+                    <li><a href="{{ url('/') }}">Sign In</a></li>
+                    <li><a href="{{ url('signup') }}">Sign Up</a></li>
                     @endif
                 </ul>
+                @if (Sentry::check())
+                <h3><a href="{{ url('schedule') }}">Scheduler</a></h3>
+                @else
                 <h3><a href="{{ url('/') }}">Scheduler</a></h3>
+                @endif
             </div>
 
             <div class="row">

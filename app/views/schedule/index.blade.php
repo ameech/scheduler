@@ -2,7 +2,12 @@
 
 @section('content')
     <div class="content sign-in col-lg-8 col-lg-offset-2">
-        <h1>Schedule</h1>
+        <h1>Reminders</h1>
+
+        @if (Session::has('message'))
+        <div class="alert alert-success">{{ Session::get('message') }}</div>
+        @endif
+
         <div class="panel panel-default">
             <div class="panel-heading"><strong>Create a New Reminder</strong></div>
             <div class="panel-body">
@@ -41,14 +46,18 @@
 
         <!-- Reminders -->
         <div class="list-group">
+        @foreach ($reminders as $reminder)
             <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">List group item heading</h4>
-                <p class="list-group-item-text">...</p>
+                <h4 class="list-group-item-heading">{{ $reminder->description  }}</h4>
+                <p class="list-group-item-text">Date: {{ $reminder->date }}</p>
+                <p class="list-group-item-text">Time: {{ $reminder->time }}</p>
+                {{ Form::open(['url' => 'delete-reminder']) }}
+                {{ Form::hidden('reminder-id', $reminder->id) }}
+                {{ Form::submit('Delete Reminder', ['class' => 'btn btn-danger pull-right delete-reminder']) }}
+                {{ Form::close() }}
+                <div class="clearfix"></div>
             </a>
-            <a href="#" class="list-group-item">
-                <h4 class="list-group-item-heading">List group item heading</h4>
-                <p class="list-group-item-text">...</p>
-            </a>
+        @endforeach
         </div>
     </div>
 @endsection

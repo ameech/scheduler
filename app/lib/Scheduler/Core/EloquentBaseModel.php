@@ -29,8 +29,30 @@ abstract class EloquentBaseModel extends Eloquent
         return $this->validator->errors();
     }
 
+    public function clearRelationsCache()
+    {
+        $this->relations = [];
+    }
+
     protected function getPreparedRules()
     {
         return $this->replaceIdsIfExists($this->validationRules);
+    }
+
+    protected function replaceIdsIfExists($rules)
+    {
+        $newRules = [];
+
+        foreach ($rules as $key => $rule) {
+            if (str_contains($rule, '<id>')) {
+                $replacement = $this->exists ? $this->getAttribute($this->primaryKey) : '';
+
+                $rule = str_replace('<id>', $replacement, $rule);
+            }
+
+            array_set($newRules, $key, $rule);
+        }
+
+        return $newRules;
     }
 }

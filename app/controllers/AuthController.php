@@ -25,7 +25,7 @@ class AuthController extends BaseController {
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
             Input::flash();
-            return Redirect::to('signin')->withErrors($validator);
+            return Redirect::to('/')->withErrors($validator);
         }
 
         // Authenticate the user
@@ -35,9 +35,9 @@ class AuthController extends BaseController {
                 'password' => Input::get('password'),
             ], false);
         } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-            return Redirect::to('signin')->with("error-message", "Wrong credentials, try again.");
+            return Redirect::to('/')->with("error-message", "Wrong credentials, try again.");
         } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-            return Redirect::to('signin')->with("error-message", "That user does not exist.");
+            return Redirect::to('/')->with("error-message", "That user does not exist.");
         }
 
         // Redirect to the schedule
@@ -101,6 +101,6 @@ class AuthController extends BaseController {
     public function signout()
     {
         Sentry::logout();
-        return Redirect::to('signin')->with("message", "You've successfully signed out!");
+        return Redirect::to('/')->with("message", "You've successfully signed out!");
     }
 }

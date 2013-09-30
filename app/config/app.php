@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://scheduler.adammeech.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'rczl2G6y8kHXh15ZJZeYH72tYlMBT6UO',
+	'key' => 'RAjOytKLDeYzwR1bdUmu9snGvu3RvDnl',
 
 	/*
 	|--------------------------------------------------------------------------

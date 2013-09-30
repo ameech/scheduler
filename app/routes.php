@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('signin', 'AuthController@signin');
+#Route::get('/', 'HomeController@index');
+Route::get('/', 'AuthController@signin');
 Route::post('authenticate', 'AuthController@authenticate');
 Route::get('signup', 'AuthController@signup');
 Route::post('create-user', 'AuthController@createUser');
@@ -22,5 +22,6 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('schedule', 'ScheduleController@index');
     Route::get('settings', 'SettingsController@index');
     Route::post('create-reminder', 'ScheduleController@createReminder');
+    Route::post('delete-reminder', 'ScheduleController@deleteReminder');
 });
 
