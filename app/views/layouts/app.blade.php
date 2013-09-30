@@ -25,7 +25,11 @@
             <div id="primary-header" class="header">
                 <ul class="nav nav-pills pull-right">
                     <li><a href="{{ url('/') }}">Home</a></li>
+                    @if (Sentry::check())
+                    <li><a href="{{ url('signout') }}">Sign Out</a></li>
+                    @else
                     <li><a href="{{ url('signin') }}">Sign In</a></li>
+                    @endif
                 </ul>
                 <h3><a href="{{ url('/') }}">Scheduler</a></h3>
             </div>

@@ -3,6 +3,11 @@
 @section('content')
     <div class="content sign-up col-lg-6 col-lg-offset-3">
         <h1>Sign Up</h1>
+
+        @if (Session::has('error-message'))
+        <div class="alert alert-danger">{{ Session::get('error-message') }}</div>
+        @endif
+
         {{ Form::open(array('url' => 'create-user')) }}
             <!-- Email -->
             <div class="form-group <?php if ($errors->first('email')): ?>has-error<?php endif; ?>">
