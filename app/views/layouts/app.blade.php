@@ -24,10 +24,12 @@
         <div id="main-container" class="container">
             <div id="primary-header" class="header">
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="{{ url('/') }}">Home</a></li>
                     @if (Sentry::check())
+                    <li><a href="{{ url('schedule') }}">Schedule</a></li>
+                    <li><a href="{{ url('settings') }}">Settings</a></li>
                     <li><a href="{{ url('signout') }}">Sign Out</a></li>
                     @else
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     <li><a href="{{ url('signin') }}">Sign In</a></li>
                     @endif
                 </ul>
@@ -45,8 +47,8 @@
         </div> <!-- /container -->
 
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Scripts -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="{{ asset('js/global.js') }}"></script>
     </body>
 </html>

@@ -38,6 +38,9 @@ class ScheduleController extends BaseController {
      */
     public function createReminder()
     {
-
+        echo "<pre>";
+        var_dump(Input::all());
+        echo "</pre>";
+        exit;
     }
 }
