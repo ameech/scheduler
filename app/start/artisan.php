@@ -1,5 +1,10 @@
 <?php
 
+use Scheduler\Schedule\Schedule;
+use Scheduler\Schedule\ScheduleRepository;
+use Scheduler\Notifier\EmailNotifier;
+use Scheduler\Notifier\NotifierInterface;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Artisan Commands
@@ -10,4 +15,4 @@
 | the console gets access to each of the command object instances.
 |
 */
-
+Artisan::add(new ReminderNotifyCommand(new ScheduleRepository(new Schedule), new EmailNotifier));

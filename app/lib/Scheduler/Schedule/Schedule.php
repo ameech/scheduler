@@ -5,7 +5,7 @@ use Scheduler\Core\EloquentBaseModel;
 class Schedule extends EloquentBaseModel
 {
     protected $table    = 'reminders';
-    protected $fillable = ['user_id', 'description', 'date', 'time'];
+    protected $fillable = ['user_id', 'description', 'date', 'time', 'timestamp'];
 
     protected $validationRules = [
         'description' => 'required',

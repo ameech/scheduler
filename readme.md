@@ -2,5 +2,5 @@
 
 - Laravel
 - Twitter Bootstrap
-- Twilio (Telephony)
+- Twilio (Telephony) - Not implemented yet
 - Mandrill (Transactional Emails)

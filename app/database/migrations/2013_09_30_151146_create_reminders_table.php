@@ -19,6 +19,7 @@ class CreateRemindersTable extends Migration {
             $table->string('description');
             $table->string('date');
             $table->string('time');
+            $table->string('timestamp');
             $table->timestamps();
         });
 	}

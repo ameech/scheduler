@@ -49,6 +49,7 @@ class ScheduleController extends BaseController {
 
         $reminder = $this->schedule->getNew(Input::only('description', 'date', 'time'));
         $reminder->user_id = Sentry::getUser()->id;
+        $reminder->timestamp = strtotime(Input::get('date') . " " . Input::get('time'));
 
         // Validate the data
         if ( ! $reminder->isValid()) {

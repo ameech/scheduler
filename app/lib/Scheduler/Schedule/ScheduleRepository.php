@@ -20,6 +20,20 @@ class ScheduleRepository extends EloquentBaseRepository
         $userId = Sentry::getUser()->id;
         return $this->model->where('user_id', $userId)->get();
     }
+    
+    /**
+     * Get the reminders within a certain span of time from the current time
+     *
+     * @param integer $currentTime
+     * @param integer $length In seconds
+     * @return object
+     */
+    public function getRemindersWithin($currentTime, $length)
+    {
+        return $this->model
+            ->whereBetween('timestamp', array($currentTime, $currentTime + $length))
+            ->get();        
+    }
 
     /**
      * Returns the schedule form
