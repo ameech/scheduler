@@ -12,4 +12,14 @@ class Schedule extends EloquentBaseModel
         'date' => 'required',
         'time' => 'required',
     ];
+
+    /**
+     * Add a user relationship
+     *
+     * @return object
+     */
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
 }

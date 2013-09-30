@@ -43,15 +43,13 @@ class ReminderNotifyCommand extends Command {
 	{
         // Get the current time
         $currentTime = time();
-        $this->info('test');
 
         // Get upcoming reminders
         $reminders = $this->schedule->getRemindersWithin($currentTime, 60);
 
         // Loop through and send reminders
         foreach ($reminders as $reminder) {
-            $result = $this->notifier->notify('meech.adam@gmail.com', $reminder->description); 
-            $this->info($result);
+            $result = $this->notifier->notify($reminder->user->email, $reminder->description); 
         }
 	}
 
