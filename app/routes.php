@@ -14,5 +14,6 @@
 Route::get('/', 'HomeController@index');
 Route::get('signin', 'AuthController@signin');
 Route::get('signup', 'AuthController@signup');
+Route::post('create-user', 'AuthController@createUser');
 Route::get('schedule', 'ScheduleController@index');
 Route::get('settings', 'SettingsController@index');

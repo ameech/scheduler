@@ -3,27 +3,30 @@
 @section('content')
     <div class="content sign-up col-lg-6 col-lg-offset-3">
         <h1>Sign Up</h1>
-        <form role="form">
+        {{ Form::open(array('url' => 'create-user')) }}
             <!-- Email -->
-            <div class="form-group">
-                <label for="email-address">Email address</label>
-                <input type="email" class="form-control" id="email-address" placeholder="Enter email">
+            <div class="form-group <?php if ($errors->first('email')): ?>has-error<?php endif; ?>">
+                {{ Form::label('email', 'Email address') }}
+                {{ Form::text('email', Input::old('email'), array('id' => 'email-address', 'class' => 'form-control', 'placeholder' => 'Enter email')) }}
+                <div class="help-block">{{ $errors->first('email') }}</div>
             </div>
 
             <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password">
+            <div class="form-group <?php if ($errors->first('password')): ?>has-error<?php endif; ?>">
+                {{ Form::label('password', 'Password') }}
+                {{ Form::password('password', array('id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password')) }}
+                <div class="help-block">{{ $errors->first('password') }}</div>
             </div>
 
             <!-- Password Confirmation -->
-            <div class="form-group">
-                <label for="password-confirmation">Password Confirmation</label>
-                <input type="password" class="form-control" id="password-confirmation" placeholder="Password Confirmation">
+            <div class="form-group <?php if ($errors->first('password_confirmation')): ?>has-error<?php endif; ?>">
+                {{ Form::label('password_confirmation', 'Password Confirmation') }}
+                {{ Form::password('password_confirmation', array('id' => 'password_confirmation', 'class' => 'form-control', 'placeholder' => 'Password Confirmation')) }}
+                <div class="help-block">{{ $errors->first('password_confirmation') }}</div>
             </div>
 
             <!-- Submit -->
-            <button type="submit" class="btn btn-success btn-block">Sign Up</button>
-        </form>
+            {{ Form::submit('Sign Up', array('class' => 'btn btn-success btn-block')) }}
+        {{ Form::close() }}
     </div>
 @endsection
