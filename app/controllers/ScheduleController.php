@@ -1,6 +1,6 @@
 <?php
 
-use Scheduler\Schedule\ScheduleInterface;
+use Scheduler\Schedule\ScheduleRepository;
 use Scheduler\Settings\SettingsInterface;
 
 class ScheduleController extends BaseController {
@@ -11,7 +11,7 @@ class ScheduleController extends BaseController {
      * @param ScheduleInterface $schedule
      * @param SettingsInterface $settings
      */
-    public function __construct(ScheduleInterface $schedule, SettingsInterface $settings)
+    public function __construct(ScheduleRepository $schedule, SettingsInterface $settings)
     {
         $this->schedule = $schedule;
         $this->settings = $settings;
@@ -25,11 +25,11 @@ class ScheduleController extends BaseController {
     public function index()
     {
         // Get reminders
-        $reminders = $this->schedule->getAll();
+        // $reminders = $this->schedule->getAll();
 
         // Render View
         return View::make('schedule.index', [
-            'reminders' => $reminders,
+            // 'reminders' => $reminders,
         ]);
     }
 
@@ -38,8 +38,17 @@ class ScheduleController extends BaseController {
      */
     public function createReminder()
     {
+        $form = $this->schedule->getScheduleForm();
+
+        // Validate the form
+        if ( ! $form->isValid()) {
+            return Redirect::to('schedule')->withErrors($form->getErrors());
+        }
+
+        $reminder = $this->schedule->getNew(Input::only('description', 'date', 'time'));
+
         echo "<pre>";
-        var_dump(Input::all());
+        var_dump($reminder);
         echo "</pre>";
         exit;
     }

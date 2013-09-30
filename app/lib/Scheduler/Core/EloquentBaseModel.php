@@ -1,4 +1,4 @@
-<?php namespace Scheduler\core;
+<?php namespace Scheduler\Core;
 
 use Validator, Eloquent;
 use Scheduler\Core\Exceptions\NoValidationRulesFoundException;
@@ -9,15 +9,9 @@ abstract class EloquentBaseModel extends Eloquent
     protected $validationRules = [];
     protected $validator;
 
-    /**
-     * Checks if the attributes are valid
-     *
-     * @return mixed
-     * @throws \Scheduler\Core\Exceptions\NoValidationRulesFoundException
-     */
     public function isValid()
     {
-        if (!isset($this->validationRules)) {
+        if ( ! isset($this->validationRules)) {
             throw new NoValidationRulesFoundException('no validation rule array defined in class ' . get_called_class());
         }
 
@@ -26,12 +20,6 @@ abstract class EloquentBaseModel extends Eloquent
         return $this->validator->passes();
     }
 
-    /**
-     * Gets the errors that are thrown if invalid
-     *
-     * @return mixed
-     * @throws \Scheduler\Core\Exceptions\NoValidatorInstantiatedException
-     */
     public function getErrors()
     {
         if ( ! $this->validator) {
@@ -39,5 +27,10 @@ abstract class EloquentBaseModel extends Eloquent
         }
 
         return $this->validator->errors();
+    }
+
+    protected function getPreparedRules()
+    {
+        return $this->replaceIdsIfExists($this->validationRules);
     }
 }

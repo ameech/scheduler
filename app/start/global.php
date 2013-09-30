@@ -89,4 +89,4 @@ require app_path().'/filters.php';
 */
 
 App::bind('Scheduler\Settings\SettingsInterface', 'Scheduler\Settings\DbSettings');
-App::bind('Scheduler\Schedule\ScheduleInterface', 'Scheduler\Schedule\DbSchedule');
+App::bind('Scheduler\Schedule\ScheduleRepository', 'Scheduler\Schedule\ScheduleRepository');
